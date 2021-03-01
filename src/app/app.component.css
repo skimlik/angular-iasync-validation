@@ -38,12 +38,16 @@ body {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  overflow-x: auto;
 }
 
 .required-indicator {
   color: red;
   margin-left: 4px;
+}
+
+.notice-message {
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .col1 {
