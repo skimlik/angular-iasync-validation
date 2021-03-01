@@ -13,8 +13,4 @@ export class AppComponent {
   constructor(fileService: FileService) {
     this.takenNames = fileService.takenNames.join(", ");
   }
-
-  setFileName(name: string): void {
-    this.name = name;
-  }
 }

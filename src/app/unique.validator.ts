@@ -26,9 +26,11 @@ export class UniqueFileNameValidator implements AsyncValidator {
   constructor(private fileService: FileService) {}
 
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
-    console.log(`start validating token "${this.forbiddenName}"`);
+    const token = this.forbiddenName || control.value;
+    console.log(`start validating token "${token}"`);
+
     const forbidden =
-      this.forbiddenName && (control.dirty || control.touched)
+     token && (control.dirty || control.touched)
         ? this.fileService.validate(control.value)
         : of(false);
 
