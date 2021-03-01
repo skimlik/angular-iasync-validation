@@ -21,7 +21,8 @@
 					<input
           #fileName="ngModel"
           [uniqueFileName]="name"
-          [(ngModel)]="name"
+          [ngModel]="name"
+          (ngModelChange)="setFileName($event)"
           type="text"
           name="fileName"
           id="fileName"

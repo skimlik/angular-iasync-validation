@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FileService } from './file.service';
+import { FileService } from "./file.service";
 
 @Component({
   selector: "my-app",
@@ -11,6 +11,10 @@ export class AppComponent {
   takenNames: string;
 
   constructor(fileService: FileService) {
-    this.takenNames = fileService.takenNames.join(', ');
+    this.takenNames = fileService.takenNames.join(", ");
+  }
+
+  setFileName(name: string): void {
+    this.name = name;
   }
 }
