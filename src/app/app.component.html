@@ -7,14 +7,14 @@
   <p class="mt-4">
     Async validation demo. Start typing file name, if you happen to type one of the taken file names, you will get an
     validation error.
-	</p>
+  </p>
 
   <form #createFile name="createFile" id="createFile" class="form-body">
     <div class="input-controls">
     <div class="col1">
-			<label for="fileName" class="file-name-label col1">File name</label>
-			<span class="required-indicator">*</span>
-		</div>
+      <label for="fileName" class="file-name-label col1">File name</label>
+      <span class="required-indicator">*</span>
+    </div>
     <div class="col2 form-control">
       <div class="input-field">
         <input
@@ -29,27 +29,27 @@
         <div class="action-indicator" *ngIf="fileName.pending">
           <i class="fa fa-spin fa-spinner fa-1x"></i>
         </div>
-        </div>
-        <div class="validation-input">
-          <div class="validation-errors" *ngIf="fileName.invalid && (fileName.dirty || fileName.touched)">
-            <div class="file-taken-error" *ngIf="fileName.errors.forbiddenName">
-              File name {{name}} already taken.
-            </div>
-            <div class="file-required-error" *ngIf="fileName.errors.required">
-              File name cannot be empty.
-            </div>
+      </div>
+      <div class="validation-input">
+        <div class="validation-errors" *ngIf="fileName.invalid && (fileName.dirty || fileName.touched)">
+          <div class="file-taken-error" *ngIf="fileName.errors.forbiddenName">
+            File name {{name}} already taken.
+          </div>
+          <div class="file-required-error" *ngIf="fileName.errors.required">
+            File name cannot be empty.
           </div>
         </div>
+      </div>
+    </div>
+    </div>
+      <div class="footer">
+        <div>
+          <span class="alert alert-success">
+            Notice save button is disabled while pending validation, and if form is invalid.
+          </span>
         </div>
-        </div>
-        <div class="footer">
-          <div>
-            <span class="alert alert-success">
-              Notice save button is disabled while pending validation, and if form is invalid.
-            </span>
-          </div>
-          <button class="btn btn-success"
-            [disabled]="fileName.pending || fileName.errors.forbiddenName || fileName.errors.required">Save</button>
-        </div>
-        </form>
-        </div>
+        <button class="btn btn-success"
+          [disabled]="fileName.pending || fileName.errors.forbiddenName || fileName.errors.required">Save</button>
+      </div>
+  </form>
+</div>
