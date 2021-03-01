@@ -26,10 +26,19 @@ body {
 
 .form-body {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
+}
+
+.input-controls {
+  display: flex;
+  flex-basis: 150px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
 }
 
 .required-indicator {
@@ -44,8 +53,31 @@ body {
 .col2 {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   flex: 1 0 300px;
 }
+
+.input-field {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.validation-input {
+  padding-top: 3px;
+  flex: 1;
+  color: red;
+}
+
+.footer {
+  flex-basis: 100px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
 
 #fileName,
 #fileName:active,
@@ -53,4 +85,8 @@ body {
   width: 90%;
   border: none;
   outline: none;
+}
+
+.info {
+  width: 100%;
 }

@@ -1,4 +1,5 @@
-import { Component, VERSION } from "@angular/core";
+import { Component } from "@angular/core";
+import { FileService } from './file.service';
 
 @Component({
   selector: "my-app",
@@ -6,6 +7,10 @@ import { Component, VERSION } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  name = "Angular " + VERSION.major;
-  fileName = "";
+  name = "";
+  takenNames: string;
+
+  constructor(fileService: FileService) {
+    this.takenNames = fileService.takenNames.join(', ');
+  }
 }

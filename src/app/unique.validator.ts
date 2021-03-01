@@ -1,4 +1,4 @@
-import { Directive } from "@angular/core";
+import { Directive, Input } from "@angular/core";
 import {
   AbstractControl,
   AsyncValidator,
@@ -6,19 +6,33 @@ import {
   ValidationErrors
 } from "@angular/forms";
 import { Observable, of } from "rxjs";
+import { map } from 'rxjs/operators';
+import { FileService } from './file.service';
 
 @Directive({
-  selector: "[customAsyncValidator]",
+  selector: "[uniqueFileName]",
   providers: [
     {
       provide: NG_ASYNC_VALIDATORS,
-      useExisting: CustomAsyncValidatorDirective,
+      useExisting: UniqueFileNameValidator,
       multi: true
     }
   ]
 })
-export class CustomAsyncValidatorDirective implements AsyncValidator {
+export class UniqueFileNameValidator implements AsyncValidator {
+  @Input('uniqueFileName')
+  forbiddenName: string;
+
+  constructor(private fileService: FileService) {
+
+  }
+
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
-    return of({ custom: true });
+
+    const forbidden = this.forbiddenName && (control.dirty || control.touched)
+      ? this.fileService.validate(control.value)
+      : of(false)
+
+    return forbidden.pipe(map(forbiddenName => ({ forbiddenName })));
   }
 }
