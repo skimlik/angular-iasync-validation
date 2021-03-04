@@ -6,7 +6,7 @@ import {
   ValidationErrors
 } from "@angular/forms";
 import { Observable, of } from "rxjs";
-import { map } from "rxjs/operators";
+import { debounceTime, map, tap } from "rxjs/operators";
 import { FileService } from "./file.service";
 
 @Directive({
@@ -27,11 +27,15 @@ export class UniqueFileNameValidator implements AsyncValidator {
 
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
     const token = this.forbiddenName || control.value;
-    console.log(`start validating token "${token}"`);
+
+    let validate$ = this.fileService.validate(control.value).pipe(
+        debounceTime(300),
+        tap(() => console.log(`start validating token "${token}"`))
+    );
 
     const forbidden =
      token && (control.dirty || control.touched)
-        ? this.fileService.validate(control.value)
+        ? validate$
         : of(false);
 
     return forbidden.pipe(map(forbiddenName => ({ forbiddenName })));
