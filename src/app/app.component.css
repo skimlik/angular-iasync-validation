@@ -1,26 +1,26 @@
-html,
-body {
-  font-family: Lato;
-  box-sizing: border-box;
+.container {
   height: 100%;
   width: 100%;
-  background-color: gray;
+  padding-top: 1em;
+  max-width: 768px;
+  margin: 0 auto 20px auto;
+  font-family: Lato, sans-serif;
+  background-color: white;
 }
 
-.container {
-  margin: 20px auto 20px auto;
-  font-family: Lato;
-}
-
-@media (min-width: 720px) {
+@media (min-width: 1024px) {
   .container {
-    width: 640px;
+    max-width: 680px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    width: 768px;
+    max-width: 680px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }
 
@@ -32,12 +32,17 @@ body {
 }
 
 .input-controls {
-  display: flex;
   flex-basis: 150px;
-  flex-direction: row;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+  .input-controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
 }
 
 .required-indicator {
@@ -92,4 +97,15 @@ body {
 
 .info {
   width: 100%;
+}
+
+.info .alert {
+  margin-top: 0;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.notice-message {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }

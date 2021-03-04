@@ -1,10 +1,11 @@
 <div class="container">
   <div class="info">
-    <span class="alert alert-info">
-      File names [{{takenNames}}] already taken.
-    </span>
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">Precondition</h4>
+      File names [{{takenNames}}] already exist in database.
+    </div>
   </div>
-  <p class="mt-4">
+  <p>
     Async validation demo. Start typing file name, if you happen to type one of the taken file names, you will get
     an
     validation error.
@@ -45,9 +46,10 @@
     </div>
     <div class="footer">
       <div>
-        <span class="notice-message alert alert-success">
-            Notice save button is disabled while pending validation, and if form is invalid.
-          </span>
+        <div class="notice-message alert alert-success" role="alert">
+          <h4 class="alert-heading">Notice</h4>
+          save button is disabled while pending validation, and if form is invalid.
+        </div>
       </div>
       <button class="btn btn-success"
           [disabled]="fileName.pending || fileName.errors?.forbiddenName || fileName.errors?.required">Save</button>
