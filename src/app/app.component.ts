@@ -10,7 +10,17 @@ export class AppComponent {
   name = "";
   takenNames: string;
 
-  constructor(fileService: FileService) {
-    this.takenNames = fileService.takenNames.join(", ");
+  constructor(private fileService: FileService) {
+    this.displayTakenNames();
+  }
+
+  save(): void {
+    this.fileService.save(this.name);
+    this.displayTakenNames();
+  }
+
+  displayTakenNames(): void {
+    this.name = "";
+    this.takenNames = this.fileService.takenNames.join(", ");
   }
 }

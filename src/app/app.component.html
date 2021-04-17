@@ -52,6 +52,7 @@
         </div>
       </div>
       <button class="btn btn-success"
+          (click)="save()"
           [disabled]="fileName.pending || fileName.errors?.forbiddenName || fileName.errors?.required">Save</button>
     </div>
   </form>
